@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[38]:
 
 
 import twitter
-api = twitter.Api(consumer_key='...',
-                      consumer_secret='...',
-                      access_token_key='...',
-                      access_token_secret='...',
+api = twitter.Api(consumer_key=' ',
+                      consumer_secret=' ',
+                      access_token_key=' ',
+                      access_token_secret=' ',
                  tweet_mode='extended')
 
 
-# In[3]:
+# In[44]:
 
 
 import time
@@ -22,16 +22,24 @@ list_of_tweets.append(status.full_text)
 while status.in_reply_to_status_id:
      status = api.GetStatus(status.in_reply_to_status_id)
      list_of_tweets.append(status.full_text)
-     time.sleep(3)
+     time.sleep(10)
 
 
-# In[5]:
+# In[33]:
 
 
-list_of_tweets.reverse()
-for tweet in list_of_tweets:
-    tweet = tweet.replace("@niesse","")
-    
+list_of_tweets.reverse() 
+
+
+# In[34]:
+
+
+list_of_tweets = [tweet.replace("@niesse","") for tweet in list_of_tweets]
+
+
+# In[41]:
+
+
 for tweet in list_of_tweets:
     print(tweet)
 
